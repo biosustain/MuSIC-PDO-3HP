@@ -1,6 +1,6 @@
 ### Multiscale Analysis of the Sustainable Production of 1,3-PDO and 3HP
 
-This folder contains the code, simulations, visualizations, and data used for the project "Multiscale Analysis of the Sustainable Production of 1,3-PDO and 3HP"
+This repository contains the model, data, and code used for the publication "Multi-scale Exploration of the Technical, Economic, and Environmental Dimensions of Bio-based Chemical Production".
 
 The top level folder contains 9 iPython notebooks.  The content are explained in the comments/markups inside each notebook.
 
@@ -9,4 +9,4 @@ The top level folder contains 9 iPython notebooks.  The content are explained in
 - The folder "models" contains the metabolic models used for cell level simulations.
 
 Citation: 
-K. Zhuang and M. Herrgard. (In Press.) Multi-scale Exploration of the Technical, Economic, and Environmental Dimensions of Bio-based Chemical Production. *Metabolic Engineering*
+Kai Zhuang and Markus Herrgard. (In Press.) Multi-scale Exploration of the Technical, Economic, and Environmental Dimensions of Bio-based Chemical Production. *Metabolic Engineering*.

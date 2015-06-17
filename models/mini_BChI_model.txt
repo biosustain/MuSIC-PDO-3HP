@@ -1,0 +1,168 @@
+
+# Text based model representation
+# Format: "Reaction id : substrates --> products [lower bound, upper bound]"
+# valid identifiers can contain letters, numbers or underscore (_) but must begin with a letter (for SBML compatibility)
+# Use --> or <-> for irreversible or reversible reactions respectively
+# bounds are optional and can be specified only in one direction, eg: [-10.0,]
+# begin with # to comment out any line
+
+EX_co2e_mkt: co2e_mkt <-> 
+EX_po4e_mkt: po4e_mkt <-> 
+EX_waste_organic_mkt: waste_organic_mkt <-> 
+EX_waste_cellulosic_mkt: waste_cellulosic_mkt <-> 
+EX_waste_inorganic_mkt: waste_inorganic_mkt <-> 
+EX_lime_mkt: lime_mkt <-> 
+EX_sulfuric_acid_mkt: sulfuric_acid_mkt <-> 
+DM_glc_mkt: glc_mkt <-> 0.43 dollar_mkt
+DM_glyc_mkt: glyc_mkt <-> 0.18 dollar_mkt
+DM_1,3pdo_mkt: 1,3pdo_mkt <-> 1.8 dollar_mkt
+DM_3hp_mkt: 3hp_mkt <-> 2.4 dollar_mkt
+DM_biomass_mkt: biomass_mkt <-> 
+DM_soymeal_mkt: soymeal_mkt <-> 
+DM_biodiesel_mkt: biodiesel_mkt <-> 0.9072 dollar_mkt
+DM_energy_mkt: energy_mkt <-> 0.02 dollar_mkt
+EX_land_res: land_res <-> 
+EX_petroleum_res: petroleum_res <-> 
+EX_natural_gas_res: natural_gas_res <-> 
+EX_coal_res: coal_res <-> 
+MX_res2mkt_land: land_res + 41 dollar_mkt <-> land_mkt + 41 dollar_res
+PROFIT_res: dollar_res <-> 
+MX_res2mkt_petroleum: petroleum_res + 0.765 dollar_mkt <-> petroleum_mkt + 0.765 dollar_res
+MX_res2mkt_natural_gas: natural_gas_res + 0.5628 dollar_mkt <-> natural_gas_mkt + 0.5628 dollar_res
+MX_res2mkt_coal: coal_res + 0.0552 dollar_mkt <-> coal_mkt + 0.0552 dollar_res
+MX_agr2mkt_land: land_agr + 41 dollar_mkt <-> land_mkt + 41 dollar_agr
+MX_agr2mkt_po4e: po4e_agr <-> po4e_mkt
+MX_agr2mkt_waste_organic: waste_organic_agr <-> waste_organic_mkt
+MX_agr2mkt_waste_cellulosic: waste_cellulosic_agr <-> waste_cellulosic_mkt
+MX_agr2mkt_glc: glc_agr + 0.43 dollar_mkt <-> glc_mkt + 0.43 dollar_agr
+MX_agr2mkt_glyc: glyc_agr + 0.18 dollar_mkt <-> glyc_mkt + 0.18 dollar_agr
+MX_agr2mkt_soymeal: soymeal_agr <-> soymeal_mkt
+MX_agr2mkt_biodiesel: biodiesel_agr + 0.9072 dollar_mkt <-> biodiesel_mkt + 0.9072 dollar_agr
+MX_agr2mkt_energy: energy_agr + 0.02 dollar_mkt <-> energy_mkt + 0.02 dollar_agr
+soy_conversion: 1.46768831169 energy_agr + soyoil_agr --> 0.96 biodiesel_agr + 0.205 glyc_agr
+PROFIT_agr: dollar_agr <-> 
+soy_crushing: soy_agr + 1.0668961039 energy_agr --> 0.18 soyoil_agr + 0.074 waste_cellulosic_agr + 0.574 soymeal_agr
+corn_farming: 0.000116959064327 land_agr + 2.75 energy_agr --> corn_agr + 0.0031072 po4e_agr
+corn_hydrolysis: starch_agr --> 0.95 glc_agr + 0.05 waste_organic_agr
+corn_wetmill: corn_agr + 2.17301775148 energy_agr --> 0.455621301775 waste_cellulosic_agr + 0.544378698225 starch_agr
+soy_farming: 0.00037037037037 land_agr + 2.13 energy_agr --> soy_agr + 0.0020772 po4e_agr
+MX_erg2mkt_petroleum: petroleum_erg + 0.765 dollar_mkt <-> petroleum_mkt + 0.765 dollar_erg
+MX_erg2mkt_natural_gas: natural_gas_erg + 0.5628 dollar_mkt <-> natural_gas_mkt + 0.5628 dollar_erg
+MX_erg2mkt_coal: coal_erg + 0.0552 dollar_mkt <-> coal_mkt + 0.0552 dollar_erg
+MX_erg2mkt_co2e: co2e_erg <-> co2e_mkt
+MX_erg2mkt_energy: energy_erg + 0.02 dollar_mkt <-> energy_mkt + 0.02 dollar_erg
+MX_erg2mkt_biodiesel: biodiesel_erg + 0.9072 dollar_mkt <-> biodiesel_mkt + 0.9072 dollar_erg
+energy_from_natural_gas: 0.0186567164179 natural_gas_erg --> 0.057 co2e_erg + energy_erg
+PROFIT_erg: dollar_erg <-> 
+energy_from_petroleum: 0.0235294117647 petroleum_erg --> 0.075 co2e_erg + energy_erg
+energy_from_coal: 0.0416666666667 coal_erg --> energy_erg + 0.095 co2e_erg
+energy_from_biodiesel: 0.026455026455 biodiesel_erg --> energy_erg + 0.049 co2e_erg
+MX_bch2mkt_land: land_bch + 41 dollar_mkt <-> land_mkt + 41 dollar_bch
+MX_bch2mkt_waste_organic: waste_organic_bch <-> waste_organic_mkt
+MX_bch2mkt_waste_inorganic: waste_inorganic_bch <-> waste_inorganic_mkt
+MX_bch2mkt_glc: glc_bch + 0.43 dollar_mkt <-> glc_mkt + 0.43 dollar_bch
+MX_bch2mkt_glyc: glyc_bch + 0.18 dollar_mkt <-> glyc_mkt + 0.18 dollar_bch
+MX_bch2mkt_1,3pdo: 1,3pdo_bch + 1.8 dollar_mkt <-> 1,3pdo_mkt + 1.8 dollar_bch
+MX_bch2mkt_3hp: 3hp_bch + 2.4 dollar_mkt <-> 3hp_mkt + 2.4 dollar_bch
+MX_bch2mkt_biomass: biomass_bch <-> biomass_mkt
+MX_bch2mkt_energy: energy_bch + 0.02 dollar_mkt <-> energy_mkt + 0.02 dollar_bch
+MX_bch2mkt_lime: lime_bch <-> lime_mkt
+MX_bch2mkt_sulfuric_acid: sulfuric_acid_bch <-> sulfuric_acid_mkt
+inorganicWaste_from_gypsum: gypsum_bch --> waste_inorganic_bch
+BPR_glc_1,3pdo_ecoli_mu_0.1_aeroFB_ctrf_evapM: glc_bch + 18.8035284539 energy_bch --> 0.528619889975 1,3pdo_bch + 0.0554581265729 biomass_bch + 0.415921983452 waste_organic_bch
+BPR_glc_1,3pdo_ecoli_mu_0.2_aeroFB_ctrf_evapM: glc_bch + 12.3573872948 energy_bch --> 0.46961326992 1,3pdo_bch + 0.110916253146 biomass_bch + 0.419470476934 waste_organic_bch
+BPR_glc_1,3pdo_ecoli_mu_0.3_aeroFB_ctrf_evapM: glc_bch + 9.42792598826 energy_bch --> 0.410606649865 1,3pdo_bch + 0.166374379719 biomass_bch + 0.423018970416 waste_organic_bch
+BPR_glc_1,3pdo_ecoli_mu_0.4_aeroFB_ctrf_evapM: glc_bch + 7.49964076462 energy_bch --> 0.35160002981 1,3pdo_bch + 0.221832506292 biomass_bch + 0.426567463899 waste_organic_bch
+BPR_glc_1,3pdo_ecoli_mu_0.5_aeroFB_ctrf_evapM: glc_bch + 5.9590371318 energy_bch --> 0.292593409755 1,3pdo_bch + 0.277290632865 biomass_bch + 0.430115957381 waste_organic_bch
+BPR_glc_1,3pdo_ecoli_mu_0.599_aeroFB_ctrf_evapM: glc_bch + 4.6888023036 energy_bch --> 0.233472757278 1,3pdo_bch + 0.332748758799 biomass_bch + 0.433778483923 waste_organic_bch
+BPR_glc_1,3pdo_ecoli_mu_0.699_aeroFB_ctrf_evapM: glc_bch + 4.05163077921 energy_bch --> 0.174039734896 1,3pdo_bch + 0.388206885266 biomass_bch + 0.437753379838 waste_organic_bch
+BPR_glc_1,3pdo_ecoli_mu_0.799_aeroFB_ctrf_evapM: glc_bch + 3.93305203898 energy_bch --> 0.114281270453 1,3pdo_bch + 0.443665011732 biomass_bch + 0.442053717814 waste_organic_bch
+BPR_glc_3hp_ecoli_mu_0.1_aeroFB_ctrf_evapM: glc_bch + 29.1010684307 energy_bch + 0.376300634955 lime_bch + 0.498074557913 sulfuric_acid_bch --> 0.86916023148 3hp_bch + 0.0554581265712 biomass_bch + 0.0753816419489 waste_organic_bch + 0.691394091505 gypsum_bch
+BPR_glc_3hp_ecoli_mu_0.2_aeroFB_ctrf_evapM: glc_bch + 19.4628178276 energy_bch + 0.334419904526 lime_bch + 0.442640885057 sulfuric_acid_bch --> 0.772426232191 3hp_bch + 0.110916253142 biomass_bch + 0.116657514667 waste_organic_bch + 0.614444740702 gypsum_bch
+BPR_glc_3hp_ecoli_mu_0.3_aeroFB_ctrf_evapM: glc_bch + 14.9934999297 energy_bch + 0.292539174097 lime_bch + 0.387207212202 sulfuric_acid_bch --> 0.675692232901 3hp_bch + 0.166374379714 biomass_bch + 0.157933387385 waste_organic_bch + 0.537495389898 gypsum_bch
+BPR_glc_3hp_ecoli_mu_0.4_aeroFB_ctrf_evapM: glc_bch + 11.9593184904 energy_bch + 0.250658443668 lime_bch + 0.331773539346 sulfuric_acid_bch --> 0.578958233612 3hp_bch + 0.221832506285 biomass_bch + 0.199209260103 waste_organic_bch + 0.460546039095 gypsum_bch
+BPR_glc_3hp_ecoli_mu_0.5_aeroFB_ctrf_evapM: glc_bch + 9.48390250468 energy_bch + 0.20853579078 lime_bch + 0.276019655971 sulfuric_acid_bch --> 0.481665454027 3hp_bch + 0.277290632875 biomass_bch + 0.241043913098 waste_organic_bch + 0.383152193271 gypsum_bch
+BPR_glc_3hp_ecoli_mu_0.599_aeroFB_ctrf_evapM: glc_bch + 7.3414195959 energy_bch + 0.166207982314 lime_bch + 0.219994227016 sulfuric_acid_bch --> 0.383898816432 3hp_bch + 0.332748758799 biomass_bch + 0.283352424769 waste_organic_bch + 0.305381405871 gypsum_bch
+BPR_glc_3hp_ecoli_mu_0.699_aeroFB_ctrf_evapM: glc_bch + 5.40630425427 energy_bch + 0.123880512296 lime_bch + 0.163969246035 sulfuric_acid_bch --> 0.286132960568 3hp_bch + 0.388206885266 biomass_bch + 0.325660154166 waste_organic_bch + 0.227611240317 gypsum_bch
+BPR_glc_3hp_ecoli_mu_0.799_aeroFB_ctrf_evapM: glc_bch + 3.93304924799 energy_bch + 0.0814727865492 lime_bch + 0.107838037922 sulfuric_acid_bch --> 0.188181734067 3hp_bch + 0.443665011732 biomass_bch + 0.368153254201 waste_organic_bch + 0.149693617299 gypsum_bch
+BPR_glyc_1,3pdo_ecoli_mu_0.092_aeroFB_ctrf_evapM: glyc_bch + 22.9724051788 energy_bch --> 0.613420921243 1,3pdo_bch + 0.0665337687622 biomass_bch + 0.320045309995 waste_organic_bch
+BPR_glyc_1,3pdo_ecoli_mu_0.184_aeroFB_ctrf_evapM: glyc_bch + 14.7563764461 energy_bch --> 0.539579695553 1,3pdo_bch + 0.133067537524 biomass_bch + 0.327352766923 waste_organic_bch
+BPR_glyc_1,3pdo_ecoli_mu_0.276_aeroFB_ctrf_evapM: glyc_bch + 11.0628692234 energy_bch --> 0.465738469862 1,3pdo_bch + 0.199601306286 biomass_bch + 0.334660223852 waste_organic_bch
+BPR_glyc_1,3pdo_ecoli_mu_0.368_aeroFB_ctrf_evapM: glyc_bch + 8.62516352222 energy_bch --> 0.391897240507 1,3pdo_bch + 0.26613507835 biomass_bch + 0.341967681142 waste_organic_bch
+BPR_glyc_1,3pdo_ecoli_mu_0.46_aeroFB_ctrf_evapM: glyc_bch + 6.69402118232 energy_bch --> 0.318056013901 1,3pdo_bch + 0.332668847938 biomass_bch + 0.349275138162 waste_organic_bch
+BPR_glyc_1,3pdo_ecoli_mu_0.551_aeroFB_ctrf_evapM: glyc_bch + 5.04302874536 energy_bch --> 0.244214102981 1,3pdo_bch + 0.399202611748 biomass_bch + 0.356583285271 waste_organic_bch
+BPR_glyc_1,3pdo_ecoli_mu_0.643_aeroFB_ctrf_evapM: glyc_bch + 4.1120936212 energy_bch --> 0.170372762323 1,3pdo_bch + 0.465736380372 biomass_bch + 0.363890857305 waste_organic_bch
+BPR_glyc_1,3pdo_ecoli_mu_0.735_aeroFB_ctrf_evapM: glyc_bch + 3.98305749578 energy_bch --> 0.0961306781359 1,3pdo_bch + 0.532270148997 biomass_bch + 0.371599172867 waste_organic_bch
+BPR_glyc_3hp_ecoli_mu_0.092_aeroFB_ctrf_evapM: glyc_bch + 33.7021616551 energy_bch + 0.0165925869326 waste_organic_bch + 0.411325465186 lime_bch + 0.544433705925 sulfuric_acid_bch --> 0.950058818202 3hp_bch + 0.0665337687307 biomass_bch + 0.755746788332 gypsum_bch
+BPR_glyc_3hp_ecoli_mu_0.184_aeroFB_ctrf_evapM: glyc_bch + 22.168850551 energy_bch + 0.364490635166 lime_bch + 0.482442746862 sulfuric_acid_bch --> 0.841882089492 3hp_bch + 0.133067537461 biomass_bch + 0.0250503730471 waste_organic_bch + 0.669695047399 gypsum_bch
+BPR_glyc_3hp_ecoli_mu_0.276_aeroFB_ctrf_evapM: glyc_bch + 16.8633290953 energy_bch + 0.317655805147 lime_bch + 0.420451787799 sulfuric_acid_bch --> 0.733705360781 3hp_bch + 0.199601306192 biomass_bch + 0.0666933330268 waste_organic_bch + 0.583643306466 gypsum_bch
+BPR_glyc_3hp_ecoli_mu_0.368_aeroFB_ctrf_evapM: glyc_bch + 13.3063116462 energy_bch + 0.27071199311 lime_bch + 0.358316579258 sulfuric_acid_bch --> 0.625276910903 3hp_bch + 0.266135074932 biomass_bch + 0.108588014166 waste_organic_bch + 0.497391327967 gypsum_bch
+BPR_glyc_3hp_ecoli_mu_0.46_aeroFB_ctrf_evapM: glyc_bch + 10.3908093784 energy_bch + 0.222189463985 lime_bch + 0.294091768037 sulfuric_acid_bch --> 0.513202019903 3hp_bch + 0.332668843726 biomass_bch + 0.154129136371 waste_organic_bch + 0.408238701516 gypsum_bch
+BPR_glyc_3hp_ecoli_mu_0.551_aeroFB_ctrf_evapM: glyc_bch + 7.80288821735 energy_bch + 0.171572887825 lime_bch + 0.227095259256 sulfuric_acid_bch --> 0.396290404653 3hp_bch + 0.399202611748 biomass_bch + 0.2045069836 waste_organic_bch + 0.315238588206 gypsum_bch
+BPR_glyc_3hp_ecoli_mu_0.643_aeroFB_ctrf_evapM: glyc_bch + 5.44397099408 energy_bch + 0.120046217247 lime_bch + 0.158894142157 sulfuric_acid_bch --> 0.277276699209 3hp_bch + 0.465736380372 biomass_bch + 0.256986920419 waste_organic_bch + 0.220566317466 gypsum_bch
+BPR_glyc_3hp_ecoli_mu_0.735_aeroFB_ctrf_evapM: glyc_bch + 3.98300163129 energy_bch + 0.0684007691355 lime_bch + 0.0905358101564 sulfuric_acid_bch --> 0.157988647407 3hp_bch + 0.532270148997 biomass_bch + 0.309741203596 waste_organic_bch + 0.125675811417 gypsum_bch
+BPR_glc_1,3pdo_ecoli_mu_0.058_anaeFB_ctrf_evapM: glc_bch + 9.55864620038 energy_bch --> 0.486082003343 1,3pdo_bch + 0.0159680258256 biomass_bch + 0.497949970832 waste_organic_bch
+BPR_glc_1,3pdo_ecoli_mu_0.115_anaeFB_ctrf_evapM: glc_bch + 7.76441782692 energy_bch --> 0.445885920146 1,3pdo_bch + 0.0319360514309 biomass_bch + 0.522178028424 waste_organic_bch
+BPR_glc_1,3pdo_ecoli_mu_0.173_anaeFB_ctrf_evapM: glc_bch + 6.64987212852 energy_bch --> 0.400606984404 1,3pdo_bch + 0.0479040771463 biomass_bch + 0.55148893845 waste_organic_bch
+BPR_glc_1,3pdo_ecoli_mu_0.23_anaeFB_ctrf_evapM: glc_bch + 5.70314030832 energy_bch --> 0.352388545568 1,3pdo_bch + 0.0638721027676 biomass_bch + 0.583739351664 waste_organic_bch
+BPR_glc_1,3pdo_ecoli_mu_0.288_anaeFB_ctrf_evapM: glc_bch + 4.7538509948 energy_bch --> 0.297923838495 1,3pdo_bch + 0.0798401284595 biomass_bch + 0.622236033045 waste_organic_bch
+BPR_glc_1,3pdo_ecoli_mu_0.345_anaeFB_ctrf_evapM: glc_bch + 3.86415474517 energy_bch --> 0.243459131422 1,3pdo_bch + 0.0958081541514 biomass_bch + 0.660732714427 waste_organic_bch
+BPR_glc_1,3pdo_ecoli_mu_0.403_anaeFB_ctrf_evapM: glc_bch + 3.28690456158 energy_bch --> 0.16709045616 1,3pdo_bch + 0.1117761792 biomass_bch + 0.72113336464 waste_organic_bch
+BPR_glc_1,3pdo_ecoli_mu_0.46_anaeFB_ctrf_evapM: glc_bch + 3.25724401409 energy_bch --> 0.0835456623113 1,3pdo_bch + 0.1277442048 biomass_bch + 0.788710132889 waste_organic_bch
+BPR_glc_3hp_ecoli_mu_0.058_anaeFB_ctrf_evapM: glc_bch + 17.5693190835 energy_bch + 0.402783399757 lime_bch + 0.533127359172 sulfuric_acid_bch --> 0.930328786212 3hp_bch + 0.0159680257765 biomass_bch + 0.0537031880117 waste_organic_bch + 0.740052067095 gypsum_bch
+BPR_glc_3hp_ecoli_mu_0.115_anaeFB_ctrf_evapM: glc_bch + 15.4579517835 energy_bch + 0.394266799514 lime_bch + 0.521854718345 sulfuric_acid_bch --> 0.910657572424 3hp_bch + 0.031936051553 biomass_bch + 0.0574063760233 waste_organic_bch + 0.72440413419 gypsum_bch
+BPR_glc_3hp_ecoli_mu_0.173_anaeFB_ctrf_evapM: glc_bch + 13.8893105145 energy_bch + 0.369522971564 lime_bch + 0.48910358794 sulfuric_acid_bch --> 0.853505526346 3hp_bch + 0.0479040775893 biomass_bch + 0.0985903960643 waste_organic_bch + 0.678941185537 gypsum_bch
+BPR_glc_3hp_ecoli_mu_0.23_anaeFB_ctrf_evapM: glc_bch + 11.5846196547 energy_bch + 0.314981420419 lime_bch + 0.416911950587 sulfuric_acid_bch --> 0.727528201795 3hp_bch + 0.0638721034524 biomass_bch + 0.208599694752 waste_organic_bch + 0.578729539049 gypsum_bch
+BPR_glc_3hp_ecoli_mu_0.288_anaeFB_ctrf_evapM: glc_bch + 9.45378269647 energy_bch + 0.260439873711 lime_bch + 0.344720319106 sulfuric_acid_bch --> 0.601550887493 3hp_bch + 0.0798401280165 biomass_bch + 0.318608984491 waste_organic_bch + 0.478517900714 gypsum_bch
+BPR_glc_3hp_ecoli_mu_0.345_anaeFB_ctrf_evapM: glc_bch + 7.40818291054 energy_bch + 0.205898323453 lime_bch + 0.272528682928 sulfuric_acid_bch --> 0.475573564991 3hp_bch + 0.0958081536198 biomass_bch + 0.428618281389 waste_organic_bch + 0.378306255857 gypsum_bch
+BPR_glc_3hp_ecoli_mu_0.403_anaeFB_ctrf_evapM: glc_bch + 5.1695723937 energy_bch + 0.144109601141 lime_bch + 0.190744631319 sulfuric_acid_bch --> 0.332857089921 3hp_bch + 0.111776179197 biomass_bch + 0.555366730883 waste_organic_bch + 0.264779055635 gypsum_bch
+BPR_glc_3hp_ecoli_mu_0.46_anaeFB_ctrf_evapM: glc_bch + 3.25723889535 energy_bch + 0.0729376155903 lime_bch + 0.0965408167453 sulfuric_acid_bch --> 0.168467626576 3hp_bch + 0.127744204796 biomass_bch + 0.703788168628 waste_organic_bch + 0.134011563583 gypsum_bch
+BPR_glc_1,3pdo_scere_mu_0.079_aeroFB_ctrf_evapM: glc_bch + 16.3923812336 energy_bch --> 0.581675064488 1,3pdo_bch + 0.0219542583098 biomass_bch + 0.396370677202 waste_organic_bch
+BPR_glc_1,3pdo_scere_mu_0.158_aeroFB_ctrf_evapM: glc_bch + 11.1654052142 energy_bch --> 0.562378172889 1,3pdo_bch + 0.0439085166197 biomass_bch + 0.393713310491 waste_organic_bch
+BPR_glc_1,3pdo_scere_mu_0.237_aeroFB_ctrf_evapM: glc_bch + 9.17920352457 energy_bch --> 0.54308128129 1,3pdo_bch + 0.0658627749295 biomass_bch + 0.39105594378 waste_organic_bch
+BPR_glc_1,3pdo_scere_mu_0.316_aeroFB_ctrf_evapM: glc_bch + 7.96103977291 energy_bch --> 0.518637054189 1,3pdo_bch + 0.0878170332394 biomass_bch + 0.393545912572 waste_organic_bch
+BPR_glc_1,3pdo_scere_mu_0.396_aeroFB_ctrf_evapM: glc_bch + 7.03613414232 energy_bch --> 0.49367404663 1,3pdo_bch + 0.109771291549 biomass_bch + 0.396554661821 waste_organic_bch
+BPR_glc_1,3pdo_scere_mu_0.475_aeroFB_ctrf_evapM: glc_bch + 5.54678203205 energy_bch --> 0.407576595443 1,3pdo_bch + 0.131725549859 biomass_bch + 0.460697854698 waste_organic_bch
+BPR_glc_1,3pdo_scere_mu_0.554_aeroFB_ctrf_evapM: glc_bch + 3.98636977179 energy_bch --> 0.271717730295 1,3pdo_bch + 0.153679808169 biomass_bch + 0.574602461536 waste_organic_bch
+BPR_glc_1,3pdo_scere_mu_0.633_aeroFB_ctrf_evapM: glc_bch + 3.8600654835 energy_bch --> 0.135858865148 1,3pdo_bch + 0.175634066479 biomass_bch + 0.688507068374 waste_organic_bch
+BPR_glc_3hp_scere_mu_0.079_aeroFB_ctrf_evapM: glc_bch + 22.6293318242 energy_bch + 0.393702182602 lime_bch + 0.521107386842 sulfuric_acid_bch --> 0.909353448752 3hp_bch + 0.0219542583098 biomass_bch + 0.0686922929386 waste_organic_bch + 0.723366738128 gypsum_bch
+BPR_glc_3hp_scere_mu_0.158_aeroFB_ctrf_evapM: glc_bch + 15.7560796512 energy_bch + 0.37727950806 lime_bch + 0.499370202256 sulfuric_acid_bch --> 0.871421183217 3hp_bch + 0.0439085166197 biomass_bch + 0.0846703001629 waste_organic_bch + 0.693192619113 gypsum_bch
+BPR_glc_3hp_scere_mu_0.237_aeroFB_ctrf_evapM: glc_bch + 12.98755759 energy_bch + 0.360856833519 lime_bch + 0.47763301767 sulfuric_acid_bch --> 0.833488917683 3hp_bch + 0.0658627749295 biomass_bch + 0.100648307387 waste_organic_bch + 0.663018500098 gypsum_bch
+BPR_glc_3hp_scere_mu_0.316_aeroFB_ctrf_evapM: glc_bch + 11.3323512869 energy_bch + 0.344434158978 lime_bch + 0.455895833084 sulfuric_acid_bch --> 0.795556652149 3hp_bch + 0.0878170332394 biomass_bch + 0.116626314612 waste_organic_bch + 0.632844381083 gypsum_bch
+BPR_glc_3hp_scere_mu_0.396_aeroFB_ctrf_evapM: glc_bch + 8.83973907295 energy_bch + 0.27975973316 lime_bch + 0.370292241022 sulfuric_acid_bch --> 0.646174924634 3hp_bch + 0.109771291549 biomass_bch + 0.244053783816 waste_organic_bch + 0.514015147943 gypsum_bch
+BPR_glc_3hp_scere_mu_0.475_aeroFB_ctrf_evapM: glc_bch + 6.5911855323 energy_bch + 0.210813579792 lime_bch + 0.279034555893 sulfuric_acid_bch --> 0.486926576228 3hp_bch + 0.131725549859 biomass_bch + 0.381347873913 waste_organic_bch + 0.387337277532 gypsum_bch
+BPR_glc_3hp_scere_mu_0.554_aeroFB_ctrf_evapM: glc_bch + 4.29951508677 energy_bch + 0.141867426424 lime_bch + 0.187776870764 sulfuric_acid_bch --> 0.327678227822 3hp_bch + 0.153679808169 biomass_bch + 0.518641964009 waste_organic_bch + 0.260659407121 gypsum_bch
+BPR_glc_3hp_scere_mu_0.633_aeroFB_ctrf_evapM: glc_bch + 3.86005871212 energy_bch + 0.0729212730563 lime_bch + 0.0965191856354 sulfuric_acid_bch --> 0.168429879415 3hp_bch + 0.175634066479 biomass_bch + 0.655936054106 waste_organic_bch + 0.13398153671 gypsum_bch
+BPR_glyc_1,3pdo_scere_mu_0.027_aeroFB_ctrf_evapM: glyc_bch + 658.200864987 energy_bch --> 0.610286695096 1,3pdo_bch + 0.0644008372188 biomass_bch + 0.325312467685 waste_organic_bch
+BPR_glyc_1,3pdo_scere_mu_0.053_aeroFB_ctrf_evapM: glyc_bch + 35.407248983 energy_bch --> 0.534000858209 1,3pdo_bch + 0.128801674438 biomass_bch + 0.337197467354 waste_organic_bch
+BPR_glyc_1,3pdo_scere_mu_0.08_aeroFB_ctrf_evapM: glyc_bch + 15.0127042124 energy_bch --> 0.457715021322 1,3pdo_bch + 0.193202511656 biomass_bch + 0.349082467022 waste_organic_bch
+BPR_glyc_1,3pdo_scere_mu_0.107_aeroFB_ctrf_evapM: glyc_bch + 11.0368434474 energy_bch --> 0.381429184435 1,3pdo_bch + 0.257603348875 biomass_bch + 0.36096746669 waste_organic_bch
+BPR_glyc_1,3pdo_scere_mu_0.133_aeroFB_ctrf_evapM: glyc_bch + 8.17906161083 energy_bch --> 0.305143347548 1,3pdo_bch + 0.322004186094 biomass_bch + 0.372852466358 waste_organic_bch
+BPR_glyc_1,3pdo_scere_mu_0.16_aeroFB_ctrf_evapM: glyc_bch + 7.37470245796 energy_bch --> 0.228857510661 1,3pdo_bch + 0.386405023313 biomass_bch + 0.384737466026 waste_organic_bch
+BPR_glyc_1,3pdo_scere_mu_0.187_aeroFB_ctrf_evapM: glyc_bch + 6.78330899144 energy_bch --> 0.152571673774 1,3pdo_bch + 0.450805860532 biomass_bch + 0.396622465694 waste_organic_bch
+BPR_glyc_1,3pdo_scere_mu_0.214_aeroFB_ctrf_evapM: glyc_bch + 6.3337715525 energy_bch --> 0.076285836887 1,3pdo_bch + 0.515206697751 biomass_bch + 0.408507465362 waste_organic_bch
+BPR_glyc_3hp_scere_mu_0.027_aeroFB_ctrf_evapM: glyc_bch + 659.683586164 energy_bch + 0.373736339504 lime_bch + 0.494680435755 sulfuric_acid_bch --> 0.863237351152 3hp_bch + 0.0644008372188 biomass_bch + 0.072361811629 waste_organic_bch + 0.686682596069 gypsum_bch
+BPR_glyc_3hp_scere_mu_0.053_aeroFB_ctrf_evapM: glyc_bch + 35.4239706472 energy_bch + 0.344272637191 lime_bch + 0.455682041543 sulfuric_acid_bch --> 0.79518357727 3hp_bch + 0.128801674438 biomass_bch + 0.076014748292 waste_organic_bch + 0.632547609835 gypsum_bch
+BPR_glyc_3hp_scere_mu_0.08_aeroFB_ctrf_evapM: glyc_bch + 20.8928035819 energy_bch + 0.29701299979 lime_bch + 0.393128804002 sulfuric_acid_bch --> 0.686025649893 3hp_bch + 0.193202511656 biomass_bch + 0.120771838451 waste_organic_bch + 0.545715351183 gypsum_bch
+BPR_glyc_3hp_scere_mu_0.107_aeroFB_ctrf_evapM: glyc_bch + 15.0882493768 energy_bch + 0.248073245231 lime_bch + 0.328351749827 sulfuric_acid_bch --> 0.572987072622 3hp_bch + 0.257603348875 biomass_bch + 0.169409578503 waste_organic_bch + 0.455796137663 gypsum_bch
+BPR_glyc_3hp_scere_mu_0.133_aeroFB_ctrf_evapM: glyc_bch + 11.0847832851 energy_bch + 0.199133490671 lime_bch + 0.263574695651 sulfuric_acid_bch --> 0.459948495351 3hp_bch + 0.322004186094 biomass_bch + 0.218047318555 waste_organic_bch + 0.365876924144 gypsum_bch
+BPR_glyc_3hp_scere_mu_0.16_aeroFB_ctrf_evapM: glyc_bch + 8.15068524706 energy_bch + 0.150193736112 lime_bch + 0.198797641476 sulfuric_acid_bch --> 0.34690991808 3hp_bch + 0.386405023313 biomass_bch + 0.266685058607 waste_organic_bch + 0.275957710624 gypsum_bch
+BPR_glyc_3hp_scere_mu_0.187_aeroFB_ctrf_evapM: glyc_bch + 6.78328857233 energy_bch + 0.100398837694 lime_bch + 0.132888711988 sulfuric_acid_bch --> 0.231896172647 3hp_bch + 0.450805860532 biomass_bch + 0.317297966822 waste_organic_bch + 0.18446730281 gypsum_bch
+BPR_glyc_3hp_scere_mu_0.214_aeroFB_ctrf_evapM: glyc_bch + 6.33378823002 energy_bch + 0.0502135695175 lime_bch + 0.0664630859357 sulfuric_acid_bch --> 0.115980770828 3hp_bch + 0.515206697751 biomass_bch + 0.368812531421 waste_organic_bch + 0.0922596510683 gypsum_bch
+BPR_glc_1,3pdo_scere_mu_0.048_anaeFB_ctrf_evapM: glc_bch + 8.6709533443 energy_bch --> 0.5528074288 1,3pdo_bch + 0.0132142046136 biomass_bch + 0.433978366586 waste_organic_bch
+BPR_glc_1,3pdo_scere_mu_0.095_anaeFB_ctrf_evapM: glc_bch + 6.25690310224 energy_bch --> 0.511168331769 1,3pdo_bch + 0.0264284092271 biomass_bch + 0.462403259003 waste_organic_bch
+BPR_glc_1,3pdo_scere_mu_0.143_anaeFB_ctrf_evapM: glc_bch + 5.33842283985 energy_bch --> 0.469529234739 1,3pdo_bch + 0.0396426138407 biomass_bch + 0.490828151421 waste_organic_bch
+BPR_glc_1,3pdo_scere_mu_0.19_anaeFB_ctrf_evapM: glc_bch + 4.66947928226 energy_bch --> 0.427775599606 1,3pdo_bch + 0.0528568184542 biomass_bch + 0.51936758194 waste_organic_bch
+BPR_glc_1,3pdo_scere_mu_0.238_anaeFB_ctrf_evapM: glc_bch + 4.07144638694 energy_bch --> 0.382722865178 1,3pdo_bch + 0.0660710230678 biomass_bch + 0.551206111754 waste_organic_bch
+BPR_glc_1,3pdo_scere_mu_0.286_anaeFB_ctrf_evapM: glc_bch + 3.17945353416 energy_bch --> 0.301361028772 1,3pdo_bch + 0.0792852276813 biomass_bch + 0.619353743547 waste_organic_bch
+BPR_glc_1,3pdo_scere_mu_0.333_anaeFB_ctrf_evapM: glc_bch + 3.13343235359 energy_bch --> 0.219592319322 1,3pdo_bch + 0.0924994322949 biomass_bch + 0.687908248383 waste_organic_bch
+BPR_glc_1,3pdo_scere_mu_0.381_anaeFB_ctrf_evapM: glc_bch + 3.09696682467 energy_bch --> 0.137615327441 1,3pdo_bch + 0.105713636908 biomass_bch + 0.756671035651 waste_organic_bch
+BPR_glc_3hp_scere_mu_0.048_anaeFB_ctrf_evapM: glc_bch + 11.141389968 energy_bch + 0.358655890265 lime_bch + 0.474719831413 sulfuric_acid_bch --> 0.828405289939 3hp_bch + 0.0132142046136 biomass_bch + 0.158380505447 waste_organic_bch + 0.658974608007 gypsum_bch
+BPR_glc_3hp_scere_mu_0.095_anaeFB_ctrf_evapM: glc_bch + 8.5010517423 energy_bch + 0.31410924928 lime_bch + 0.415757537827 sulfuric_acid_bch --> 0.725513704878 3hp_bch + 0.0264284092271 biomass_bch + 0.248057885895 waste_organic_bch + 0.577127059765 gypsum_bch
+BPR_glc_3hp_scere_mu_0.143_anaeFB_ctrf_evapM: glc_bch + 6.92397946747 energy_bch + 0.269562608296 lime_bch + 0.35679524424 sulfuric_acid_bch --> 0.622622119817 3hp_bch + 0.0396426138407 biomass_bch + 0.337735266342 waste_organic_bch + 0.495279511522 gypsum_bch
+BPR_glc_3hp_scere_mu_0.19_anaeFB_ctrf_evapM: glc_bch + 5.65843876156 energy_bch + 0.225015967311 lime_bch + 0.297832950654 sulfuric_acid_bch --> 0.519730534756 3hp_bch + 0.0528568184542 biomass_bch + 0.42741264679 waste_organic_bch + 0.413431963279 gypsum_bch
+BPR_glc_3hp_scere_mu_0.238_anaeFB_ctrf_evapM: glc_bch + 4.42954712566 energy_bch + 0.180433808956 lime_bch + 0.238823645989 sulfuric_acid_bch --> 0.416756913464 3hp_bch + 0.0660710230678 biomass_bch + 0.517172063468 waste_organic_bch + 0.331519157374 gypsum_bch
+BPR_glc_3hp_scere_mu_0.286_anaeFB_ctrf_evapM: glc_bch + 3.2749020975 energy_bch + 0.135572811927 lime_bch + 0.179445268206 sulfuric_acid_bch --> 0.313139244665 3hp_bch + 0.0792852276813 biomass_bch + 0.607575527654 waste_organic_bch + 0.249094028625 gypsum_bch
+BPR_glc_3hp_scere_mu_0.333_anaeFB_ctrf_evapM: glc_bch + 3.13344137309 energy_bch + 0.0903894680816 lime_bch + 0.119640229574 sulfuric_acid_bch --> 0.208777035443 3hp_bch + 0.0924994322949 biomass_bch + 0.698723532263 waste_organic_bch + 0.166076637562 gypsum_bch
+BPR_glc_3hp_scere_mu_0.381_anaeFB_ctrf_evapM: glc_bch + 3.09700329318 energy_bch + 0.0452061242361 lime_bch + 0.0598351909413 sulfuric_acid_bch --> 0.10441482622 3hp_bch + 0.105713636908 biomass_bch + 0.789871536872 waste_organic_bch + 0.0830592464995 gypsum_bch
+PROFIT_bch: dollar_bch <-> 
